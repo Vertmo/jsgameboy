@@ -41,13 +41,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 		<script src="Z80.js"></script>
 		<script src="GameBoy.js"></script>
 		<script src="emulator.js"></script>
+		<script src="rom.js"></script>
 	</head>
 
 	<body>
 		<div id="wrapper">
-			<header>
-				<h1>JS GameBoy Emulator</h1>
-			</header>
+			<!-- <header> -->
+			<!-- 	<h1>JS GameBoy Emulator</h1> -->
+			<!-- </header> -->
 
 			<div class="left-column">
 				<div class="gb">
@@ -83,8 +84,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 				
 			</div>
 			<div class="right-column">
-			
-				<div class="button" id="addfrompc" onclick="addROMfromComputer(event)">Add a ROM from your PC</div>
+              <div class="button" id="addfrompc" onclick="start()">Start</div>
 				
 				<div id="cartridge-data" style="display: none;">
 					<div id="title" class="title"></div>

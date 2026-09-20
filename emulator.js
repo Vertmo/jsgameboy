@@ -40,6 +40,10 @@ function loadROMfromComputer(ev){
    reader.readAsArrayBuffer(ev.target.files[0]);
 }
 
+function start() {
+    loadROM(embedrom)
+}
+
 function loadROM(arraybuffer){
    
    if(window.gb != undefined){
