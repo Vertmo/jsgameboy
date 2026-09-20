@@ -42,6 +42,7 @@ function loadROMfromComputer(ev){
 
 function start() {
     loadROM(embedrom)
+    document.getElementById("startbutton").style.display = "none"
 }
 
 function loadROM(arraybuffer){
@@ -79,7 +80,7 @@ function loadROM(arraybuffer){
       case 3: document.getElementById("cartridge").innerHTML += " - 32 KB RAM"; break;
    }
    
-   document.getElementById("cartridge-data").style.display = "";
+   // document.getElementById("cartridge-data").style.display = "";
    
    if(gb.ramSpace > 0){
       document.getElementById("delete").style.display = "";

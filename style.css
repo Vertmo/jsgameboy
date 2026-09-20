@@ -34,7 +34,7 @@ h1{
 }
 
 #wrapper{
-	width: 700px;
+	/* width: 700px; */
 	margin: 0 auto;
 }
 
@@ -74,6 +74,7 @@ h1{
 	padding: 20px;
 }
 .gb .display {
+    position: relative;
 	padding: 10px;
 	background: #8c858b;
 	border-radius: 3px;
@@ -83,10 +84,12 @@ h1{
 	background: white;
 }
 #fps {
+    display: none;
 	font-size: 8px;
 }
 
 .gb .controls {
+    display: none;
 	position: relative;
 	text-transform: uppercase;
 	height: 200px;
@@ -185,13 +188,14 @@ h1{
 }
 
 .emulator-controls {
-	background: rgba(255, 255, 255, 0.5);
-	border-radius: 3px;
-	padding: 5px;
-	display: flex;
-	justify-content: space-between;
-	align-content: center;
-	align-items: center;
+    display: none;
+	/* background: rgba(255, 255, 255, 0.5); */
+	/* border-radius: 3px; */
+	/* padding: 5px; */
+	/* display: flex; */
+	/* justify-content: space-between; */
+	/* align-content: center; */
+	/* align-items: center; */
 }
 
 #cartridge-data {
@@ -217,11 +221,17 @@ h1{
 }
 
 .copyright{
-	font-size: 12px;
-	margin: 0 0 8px 8px;
+    text-align:center;
+	font-size: 10px;
 }
 .copyright a{
 	color: #000000;
 	text-decoration: none;
 }
 
+#startbutton {
+    position: absolute;
+    left: 200px;
+    top: 206px;
+    width: 100px;
+}
