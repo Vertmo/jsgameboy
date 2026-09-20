@@ -31,6 +31,7 @@ var GameBoy = function(rom, canvas){
 
    this.LCD_WIDTH = 160;
    this.LCD_HEIGHT = 144;
+   this.LCD_SCALE = 3;
    
    this.canvas = canvas;
    this.onFPS = null;
@@ -963,15 +964,23 @@ var GameBoy = function(rom, canvas){
 
    this.drawScreenCanvas2D = function () {
       let ctx = /** @type {CanvasRenderingContext2D} */ (this.canvas.getContext("2d"));
-      let imageData = ctx.getImageData(0, 0, this.LCD_WIDTH, this.LCD_HEIGHT);
-      for (let i = 0; i < this.lcd.length; i++) {
-         let color = this.lcd[i];
-         imageData.data[i * 4] = this.COLORS[color & 0x03][0];
-         imageData.data[i * 4 + 1] = this.COLORS[color & 0x03][1];
-         imageData.data[i * 4 + 2] = this.COLORS[color & 0x03][2];
-         imageData.data[i * 4 + 3] = 255;
+      let imageData = ctx.getImageData(0, 0, this.LCD_WIDTH*this.LCD_SCALE, this.LCD_HEIGHT*this.LCD_SCALE);
+      for (let y = 0; y < this.LCD_HEIGHT; y++) {
+          for(let x = 0; x < this.LCD_WIDTH; x++) {
+              let color = this.lcd[y*this.LCD_WIDTH+x];
+              for(let yoff = 0; yoff < this.LCD_SCALE; yoff++) {
+                  for(let xoff = 0; xoff < this.LCD_SCALE; xoff++) {
+                      let idx = ((y*this.LCD_SCALE+yoff)*(this.LCD_WIDTH*this.LCD_SCALE) + x*this.LCD_SCALE+xoff) * 4;
+                      imageData.data[idx] = this.COLORS[color & 0x03][0];
+                      imageData.data[idx + 1] = this.COLORS[color & 0x03][1];
+                      imageData.data[idx + 2] = this.COLORS[color & 0x03][2];
+                      imageData.data[idx + 3] = 255;
+                  }
+              }
+          }
       }
       ctx.putImageData(imageData, 0, 0);
+      ctx.scale(2,2);
    }
    
    this.z80 = Z80(window, {
